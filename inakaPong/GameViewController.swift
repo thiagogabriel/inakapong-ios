@@ -12,46 +12,46 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var gameView: SKView!
+    @IBOutlet weak var menuButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
+        self.gameView.isHidden = true
+    }
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        self.menuButton.isHidden = true
+        self.gameView.isHidden = true
+        self.gameView.presentScene(nil)
+    }
+    @IBAction func startSinglePlayerGame(_ sender: UIButton) {
+        self.gameView.isHidden = false
+        self.menuButton.isHidden = false
+        if let singlePlayerScene = GKScene(fileNamed: "SinglePlayerGameScene") {
             
             // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
+            if let singlePlayerSceneNode = singlePlayerScene.rootNode as! SinglePlayerGameScene? {
                 
                 // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
+                singlePlayerSceneNode.entities = singlePlayerScene.entities
+                singlePlayerSceneNode.graphs = singlePlayerScene.graphs
                 
                 // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
+                singlePlayerSceneNode.scaleMode = .aspectFill
                 
                 // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
+                self.gameView.presentScene(singlePlayerSceneNode)
+                self.gameView.ignoresSiblingOrder = true                
             }
         }
     }
-
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {

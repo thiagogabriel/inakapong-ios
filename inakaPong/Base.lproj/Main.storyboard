@@ -1,26 +1,103 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="inakaPong" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72O-iT-FVD">
+                                <rect key="frame" x="143" y="264" width="89" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sl6-Ea-PO6"/>
+                                </constraints>
+                                <state key="normal" title="Single Player">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startSinglePlayerGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mil-Cu-tv5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGu-NS-R0T">
+                                <rect key="frame" x="147" y="319" width="82" height="30"/>
+                                <state key="normal" title="Two Players">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feS-ao-YXe">
+                                <rect key="frame" x="147" y="374" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Bqc-De-76k"/>
+                                </constraints>
+                                <state key="normal" title="Scoreboard">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InakaPong" translatesAutoresizingMaskIntoConstraints="NO" id="tHs-xa-kac">
+                                <rect key="frame" x="67" y="142" width="240" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="9RU-FE-RIT"/>
+                                    <constraint firstAttribute="width" constant="240" id="C4N-Or-K9t"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zk8-8J-DEK" customClass="SKView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeZ-tv-J4x">
+                                <rect key="frame" x="10" y="30" width="44" height="30"/>
+                                <state key="normal" title="MENU">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rMR-k0-9eI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CGu-NS-R0T" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="1eN-UQ-gVX"/>
+                            <constraint firstItem="CGu-NS-R0T" firstAttribute="top" secondItem="72O-iT-FVD" secondAttribute="bottom" constant="25" id="7qA-o7-yef"/>
+                            <constraint firstItem="feS-ao-YXe" firstAttribute="top" secondItem="CGu-NS-R0T" secondAttribute="bottom" constant="25" id="8Te-Hq-tyo"/>
+                            <constraint firstItem="72O-iT-FVD" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="AF7-sH-aGB"/>
+                            <constraint firstItem="AeZ-tv-J4x" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="10" id="DhA-1w-bn7"/>
+                            <constraint firstItem="zk8-8J-DEK" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="FvR-3P-kqS"/>
+                            <constraint firstItem="CGu-NS-R0T" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="JCk-LH-Op0"/>
+                            <constraint firstAttribute="trailing" secondItem="zk8-8J-DEK" secondAttribute="trailing" id="KOZ-cf-LBe"/>
+                            <constraint firstItem="AeZ-tv-J4x" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="10" id="Lpz-No-ebS"/>
+                            <constraint firstItem="72O-iT-FVD" firstAttribute="top" secondItem="tHs-xa-kac" secondAttribute="bottom" constant="25" id="N28-Vz-kpJ"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="zk8-8J-DEK" secondAttribute="bottom" id="gPI-ly-WKG"/>
+                            <constraint firstItem="feS-ao-YXe" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="iWD-na-4XL"/>
+                            <constraint firstItem="tHs-xa-kac" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="pIV-oS-PeD"/>
+                            <constraint firstItem="zk8-8J-DEK" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="tpk-MZ-I6M"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameView" destination="zk8-8J-DEK" id="3bs-1w-2RY"/>
+                        <outlet property="menuButton" destination="AeZ-tv-J4x" id="pYw-lB-4tT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="InakaPong" width="209" height="83"/>
+    </resources>
 </document>
