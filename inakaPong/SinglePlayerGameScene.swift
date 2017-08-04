@@ -16,10 +16,15 @@ class SinglePlayerGameScene: SKScene {
     var gameOn = false
     var paddle: SKSpriteNode!
     var ball: SKSpriteNode!
+    var counterLabel: SKLabelNode!
+    var counter = 0
+    var timer: Timer!
+
     
     override func sceneDidLoad() {
         self.paddle = self.childNode(withName: "paddle") as! SKSpriteNode
         self.ball = self.childNode(withName: "ball") as! SKSpriteNode
+        self.counterLabel = self.childNode(withName: "timeCounter") as! SKLabelNode
     }
     
     func startGame() {
@@ -28,6 +33,7 @@ class SinglePlayerGameScene: SKScene {
         border.restitution = 1
         self.physicsBody = border
         self.ball.physicsBody?.applyImpulse(CGVector(dx: (Int(arc4random_uniform(100)) * Int(-1.0)), dy: 70))
+        startCounter()
     }
     
     func movePaddleTo(_ pos: CGPoint) {
@@ -37,9 +43,9 @@ class SinglePlayerGameScene: SKScene {
         
         if pos.x < leftScreenBorder + margin {
             self.paddle.run(SKAction.moveTo(x: leftScreenBorder + margin, duration: 0.2))
-        }else if pos.x > rightScreenBorder - margin {
+        } else if pos.x > rightScreenBorder - margin {
             self.paddle.run(SKAction.moveTo(x: rightScreenBorder - margin, duration: 0.2))
-        }else {
+        } else {
             self.paddle.run(SKAction.moveTo(x: pos.x, duration: 0.2))
         }
     }
@@ -85,7 +91,29 @@ class SinglePlayerGameScene: SKScene {
         if self.ball.position.y <= ( self.paddle.position.y - 15 ) && self.gameOn == true {
             self.gameOn = false
             self.physicsBody = nil
+            self.stopCounter()
             //present the send score screen
         }
+    }
+    
+    //  Counter
+    
+    func startCounter() {
+        resetCounter()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
+    }
+    
+    func stopCounter() {
+        timer.invalidate()
+    }
+    
+    func updateCounter() {
+        counter += 1
+        counterLabel.text = "\(counter)"
+    }
+    
+    func resetCounter() {
+        counter = 0
+        counterLabel.text = "\(counter)"
     }
 }
