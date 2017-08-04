@@ -110,7 +110,7 @@ class SinglePlayerGameScene: SKScene {
         }
     }
     
-    //  Counter
+    // MARK: - Counter
     
     func startCounter() {
         resetCounter()
