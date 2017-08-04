@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  MenuViewController.swift
 //  inakaPong
 //
 //  Created by El gera de la gente on 8/4/17.
@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class MenuViewController: UIViewController {
 
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var menuButton: UIButton!
@@ -42,7 +42,8 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 self.gameView.presentScene(singlePlayerSceneNode)
-                self.gameView.ignoresSiblingOrder = true                
+                self.gameView.ignoresSiblingOrder = false
+                self.gameView.allowsTransparency = true
             }
         }
     }
