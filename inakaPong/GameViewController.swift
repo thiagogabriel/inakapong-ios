@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 import SafariServices
 
-class MenuViewController: UIViewController, UploadScoreProtocol, SFSafariViewControllerDelegate {
+class MenuViewController: UIViewController, UploadScoreProtocol {
 
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var menuButton: UIButton!
@@ -92,7 +92,6 @@ class MenuViewController: UIViewController, UploadScoreProtocol, SFSafariViewCon
     @IBAction func openScoreboard(_ sender: Any) {
         let scoreboardUrl = URL(string: "https://nameless-castle-90436.herokuapp.com/")!
         let webVC = SFSafariViewController(url: scoreboardUrl)
-        webVC.delegate = self
         present(webVC, animated: true, completion: nil)
     }
 }
