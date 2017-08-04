@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  SinglePlayerGameScene.swift
 //  inakaPong
 //
 //  Created by El gera de la gente on 8/4/17.
@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class SinglePlayerGameScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -27,17 +27,33 @@ class GameScene: SKScene {
         border.friction = 0
         border.restitution = 1
         self.physicsBody = border
-        self.ball.physicsBody?.applyImpulse(CGVector(dx: (Int(arc4random_uniform(100)) * Int(-1.0)), dy: 30))
+        self.ball.physicsBody?.applyImpulse(CGVector(dx: (Int(arc4random_uniform(100)) * Int(-1.0)), dy: 70))
+    }
+    
+    func movePaddleTo(_ pos: CGPoint) {
+        let margin = self.paddle.size.width/2
+        let rightScreenBorder = self.frame.size.width/2
+        let leftScreenBorder = rightScreenBorder * -1
+        
+        if pos.x < leftScreenBorder + margin {
+            self.paddle.run(SKAction.moveTo(x: leftScreenBorder + margin, duration: 0.2))
+        }else if pos.x > rightScreenBorder - margin {
+            self.paddle.run(SKAction.moveTo(x: rightScreenBorder - margin, duration: 0.2))
+        }else {
+            self.paddle.run(SKAction.moveTo(x: pos.x, duration: 0.2))
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
         if !self.gameOn { return }
-        
-        self.paddle.run(SKAction.moveTo(x: pos.x, duration: 0.2))
+
+        self.movePaddleTo(pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        self.paddle.run(SKAction.moveTo(x: pos.x, duration: 0.2))
+        if !self.gameOn { return }
+        
+        self.movePaddleTo(pos)
     }
     
     func touchUp(atPoint pos : CGPoint) {
@@ -66,9 +82,10 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        if self.ball.position.y <= ( self.paddle.position.y - 15 ) {
+        if self.ball.position.y <= ( self.paddle.position.y - 15 ) && self.gameOn == true {
+            self.gameOn = false
             self.physicsBody = nil
-            print ( "GAME OVER")
+            //present the send score screen
         }
     }
 }
