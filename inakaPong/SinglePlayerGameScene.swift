@@ -9,6 +9,10 @@
 import SpriteKit
 import GameplayKit
 
+protocol UploadScoreProtocol {
+    func finishGameWithScore(score: Int)
+}
+
 class SinglePlayerGameScene: SKScene {
     
     var entities = [GKEntity]()
@@ -20,6 +24,8 @@ class SinglePlayerGameScene: SKScene {
     var counterLabel: SKLabelNode!
     var counter = 0
     var timer: Timer!
+    
+    var scoreDelegate: UploadScoreProtocol!
 
     
     override func sceneDidLoad() {
@@ -100,7 +106,7 @@ class SinglePlayerGameScene: SKScene {
             self.gameOn = false
             self.physicsBody = nil
             self.stopCounter()
-            //present the send score screen
+            self.scoreDelegate.finishGameWithScore(score: self.counter)
         }
     }
     

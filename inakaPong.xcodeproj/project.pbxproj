@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		56470F171F3507B70029F099 /* background-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56470F161F3507B70029F099 /* background-music.mp3 */; };
 		56470F191F350CEF0029F099 /* SinglePlayerGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56470F181F350CEF0029F099 /* SinglePlayerGameScene.sks */; };
+		56470F1B1F3512030029F099 /* SendScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56470F1A1F3512030029F099 /* SendScoreViewController.swift */; };
 		56ED80881F34A99400DE26BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ED80871F34A99400DE26BB /* AppDelegate.swift */; };
 		56ED808C1F34A99400DE26BB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56ED808B1F34A99400DE26BB /* Actions.sks */; };
 		56ED808E1F34A99400DE26BB /* SinglePlayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ED808D1F34A99400DE26BB /* SinglePlayerGameScene.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		56470F161F3507B70029F099 /* background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background-music.mp3"; sourceTree = "<group>"; };
 		56470F181F350CEF0029F099 /* SinglePlayerGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SinglePlayerGameScene.sks; sourceTree = "<group>"; };
+		56470F1A1F3512030029F099 /* SendScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendScoreViewController.swift; sourceTree = "<group>"; };
 		56ED80841F34A99400DE26BB /* inakaPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inakaPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ED80871F34A99400DE26BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ED808B1F34A99400DE26BB /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				56470F161F3507B70029F099 /* background-music.mp3 */,
 				56ED80871F34A99400DE26BB /* AppDelegate.swift */,
 				56ED808F1F34A99400DE26BB /* GameViewController.swift */,
+				56470F1A1F3512030029F099 /* SendScoreViewController.swift */,
 				56ED808D1F34A99400DE26BB /* SinglePlayerGameScene.swift */,
 				56470F181F350CEF0029F099 /* SinglePlayerGameScene.sks */,
 				56ED80911F34A99400DE26BB /* Main.storyboard */,
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56ED808E1F34A99400DE26BB /* SinglePlayerGameScene.swift in Sources */,
+				56470F1B1F3512030029F099 /* SendScoreViewController.swift in Sources */,
 				56ED80901F34A99400DE26BB /* GameViewController.swift in Sources */,
 				56ED80881F34A99400DE26BB /* AppDelegate.swift in Sources */,
 			);

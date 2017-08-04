@@ -10,14 +10,35 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, UploadScoreProtocol {
 
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var menuButton: UIButton!
-
+    var score: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.gameView.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.gameView.scene != nil {
+            self.menuButton.isHidden = true
+            self.gameView.isHidden = true
+            self.gameView.presentScene(nil)
+        }
+    }
+    
+    func finishGameWithScore(score: Int) {
+        self.score = score
+        self.performSegue(withIdentifier: "sendScoreSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SendScoreViewController {
+            vc.score = self.score
+        }
     }
     
     @IBAction func goBack(_ sender: UIButton) {
@@ -32,7 +53,7 @@ class MenuViewController: UIViewController {
             
             // Get the SKScene from the loaded GKScene
             if let singlePlayerSceneNode = singlePlayerScene.rootNode as! SinglePlayerGameScene? {
-                
+                singlePlayerSceneNode.scoreDelegate = self
                 // Copy gameplay related content over to the scene
                 singlePlayerSceneNode.entities = singlePlayerScene.entities
                 singlePlayerSceneNode.graphs = singlePlayerScene.graphs

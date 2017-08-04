@@ -98,16 +98,17 @@
                     <connections>
                         <outlet property="gameView" destination="zk8-8J-DEK" id="3bs-1w-2RY"/>
                         <outlet property="menuButton" destination="AeZ-tv-J4x" id="pYw-lB-4tT"/>
+                        <segue destination="zGT-gR-jj2" kind="presentation" identifier="sendScoreSegue" animates="NO" id="FHu-I6-wwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
         </scene>
-        <!--View Controller-->
+        <!--Send Score View Controller-->
         <scene sceneID="bc3-30-wGw">
             <objects>
-                <viewController id="zGT-gR-jj2" sceneMemberID="viewController">
+                <viewController id="zGT-gR-jj2" customClass="SendScoreViewController" customModule="inakaPong" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vPt-Dw-lVH"/>
                         <viewControllerLayoutGuide type="bottom" id="5Tc-Dc-5jM"/>
@@ -173,6 +174,9 @@
                                 <state key="normal" title="SUBMIT SCORE">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitScore:" destination="zGT-gR-jj2" eventType="touchUpInside" id="ayd-R6-xXU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -199,6 +203,9 @@
                             <constraint firstItem="fKc-bZ-p2S" firstAttribute="leading" secondItem="TyV-vb-bed" secondAttribute="leadingMargin" constant="20" id="y8a-em-dy0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="XmY-wL-6Gb" id="Ct1-ds-ebP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUj-pC-fRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
